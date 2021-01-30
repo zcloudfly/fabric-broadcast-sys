@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.broadcast.app.dao.AppformDao">
+
+    <resultMap type="com.broadcast.app.entity.Appform" id="AppformMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="infotype" column="infoType" jdbcType="VARCHAR"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="starttime" column="startTime" jdbcType="VARCHAR"/>
+        <result property="endtime" column="endTime" jdbcType="VARCHAR"/>
+        <result property="checkuser" column="checkUser" jdbcType="VARCHAR"/>
+        <result property="checkuserid" column="checkUserId" jdbcType="VARCHAR"/>
+        <result property="distorg" column="distOrg" jdbcType="VARCHAR"/>
+        <result property="distorgid" column="distOrgId" jdbcType="VARCHAR"/>
+        <result property="descr" column="descr" jdbcType="VARCHAR"/>
+        <result property="senduser" column="sendUser" jdbcType="VARCHAR"/>
+        <result property="senduserid" column="sendUserId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="AppformMap">
+        select id,
+               infoType,
+               title,
+               startTime,
+               endTime,
+               checkUser,
+               checkUserId,
+               distOrg,
+               distOrgId, descr, sendUser, sendUserId
+        from fbsys.appform
+        where = #{id}
+
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="AppformMap">
+        select id,
+               infoType,
+               title,
+               startTime,
+               endTime,
+               checkUser,
+               checkUserId,
+               distOrg,
+               distOrgId, descr, sendUser, sendUserId
+        from fbsys.appform
+            limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="AppformMap">
+        select
+        id, infoType, title, startTime, endTime, checkUser, checkUserId, distOrg, distOrgId, descr, sendUser, sendUserId
+        from fbsys.appform
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="infotype != null and infotype != ''">
+                and infotype = #{infotype}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="starttime != null and starttime != ''">
+                and startTime = #{starttime}
+            </if>
+            <if test="endtime != null and endtime != ''">
+                and endTime = #{endtime}
+            </if>
+            <if test="checkuser != null and checkuser != ''">
+                and checkUser = #{checkuser}
+            </if>
+            <if test="checkuserid != null and checkuserid != ''">
+                and checkUserId = #{checkuserid}
+            </if>
+            <if test="distorg != null and distorg != ''">
+                and distOrg = #{distorg}
+            </if>
+            <if test="distorgid != null and distorgid != ''">
+                and distOrgId = #{distorgid}
+            </if>
+            <if test="descr != null and descr != ''">
+                and descr = #{descr}
+            </if>
+            <if test="senduser != null and senduser != ''">
+                and sendUser = #{senduser}
+            </if>
+            <if test="senduserid != null and senduserid != ''">
+                and sendUserId = #{senduserid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true">
+        insert into fbsys.appform(id, infoType, title, startTime, endTime, checkUser, checkUserId, distOrg, distOrgId,
+                                  descr, sendUser, sendUserId)
+        values (#{id}, #{infotype}, #{title}, #{starttime}, #{endtime}, #{checkuser}, #{checkuserid}, #{distorg},
+                #{distorgid}, #{descr}, #{senduser}, #{senduserid})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="" useGeneratedKeys="true">
+        insert into fbsys.appform(id, infoType, title, startTime, endTime, checkUser, checkUserId, distOrg, distOrgId,
+        descr, sendUser, sendUserId)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id}, #{entity.infotype}, #{entity.title}, #{entity.starttime}, #{entity.endtime},
+            #{entity.checkuser}, #{entity.checkuserid}, #{entity.distorg}, #{entity.distorgid}, #{entity.descr},
+            #{entity.senduser}, #{entity.senduserid})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="" useGeneratedKeys="true">
+        insert into fbsys.appform(id, infoType, title, startTime, endTime, checkUser, checkUserId, distOrg, distOrgId,
+        descr, sendUser, sendUserId)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id}, #{entity.infotype}, #{entity.title}, #{entity.starttime}, #{entity.endtime},
+            #{entity.checkuser}, #{entity.checkuserid}, #{entity.distorg}, #{entity.distorgid}, #{entity.descr},
+            #{entity.senduser}, #{entity.senduserid})
+        </foreach>
+        on duplicate key update
+        id = values(id) , infotype = values(infotype) , title = values(title) , startTime = values(startTime) ,
+        endTime = values(endTime) , checkUser = values(checkUser) , checkUserId = values(checkUserId) , distOrg =
+        values(distOrg) , distOrgId = values(distOrgId) , descr = values(descr) , sendUser = values(sendUser) , sendUserId
+        = values(sendUserId)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update fbsys.appform
+        <set>
+            <if test="id != null and id != ''">
+                id = #{id},
+            </if>
+            <if test="infotype != null and infotype != ''">
+                infotype = #{infotype},
+            </if>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="starttime != null and starttime != ''">
+                startTime = #{starttime},
+            </if>
+            <if test="endtime != null and endtime != ''">
+                endTime = #{endtime},
+            </if>
+            <if test="checkuser != null and checkuser != ''">
+                checkUser = #{checkuser},
+            </if>
+            <if test="checkuserid != null and checkuserid != ''">
+                checkUserId = #{checkuserid},
+            </if>
+            <if test="distorg != null and distorg != ''">
+                distOrg = #{distorg},
+            </if>
+            <if test="distorgid != null and distorgid != ''">
+                distOrgId = #{distorgid},
+            </if>
+            <if test="descr != null and descr != ''">
+                descr = #{descr},
+            </if>
+            <if test="senduser != null and senduser != ''">
+                sendUser = #{senduser},
+            </if>
+            <if test="senduserid != null and senduserid != ''">
+                sendUserId = #{senduserid},
+            </if>
+        </set>
+        where = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from fbsys.appform
+        where = #{id}
+    </delete>
+
+</mapper>

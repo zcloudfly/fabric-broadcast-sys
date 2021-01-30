@@ -1,0 +1,102 @@
+DEBUG main org.springframework.web.servlet.resource.ResourceUrlProvider - Looking for resource handler mappings
+DEBUG main org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'faviconHandlerMapping'
+DEBUG main org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'resourceHandlerMapping'
+DEBUG main org.springframework.web.servlet.resource.ResourceUrlProvider - Found resource handler mapping: URL pattern="/**/favicon.ico", locations=[class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/], ServletContext resource [/], class path resource []], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@2418ba04]
+DEBUG main org.springframework.web.servlet.resource.ResourceUrlProvider - Found resource handler mapping: URL pattern="/webjars/**", locations=[class path resource [META-INF/resources/webjars/]], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@14229fa7]
+DEBUG main org.springframework.web.servlet.resource.ResourceUrlProvider - Found resource handler mapping: URL pattern="/**", locations=[class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/], ServletContext resource [/]], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@2ab0702e]
+DEBUG main org.springframework.core.env.PropertySourcesPropertyResolver - Could not find key 'spring.liveBeansView.mbeanDomain' in any property source
+INFO main org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+DEBUG main org.springframework.web.context.support.StandardServletEnvironment - Adding PropertySource 'server.ports' with highest search precedence
+INFO main com.broadcast.app.BroadcastApplicationStart - Started BroadcastApplicationStart in 38.434 seconds (JVM running for 44.02)
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - Initializing servlet 'dispatcherServlet'
+INFO http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'multipartResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - Using MultipartResolver [org.springframework.web.multipart.support.StandardServletMultipartResolver@59e6ec4e]
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - Unable to locate LocaleResolver with name 'localeResolver': using default [org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@16b35b7e]
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.web.servlet.theme.FixedThemeResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.web.servlet.theme.FixedThemeResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - Unable to locate ThemeResolver with name 'themeResolver': using default [org.springframework.web.servlet.theme.FixedThemeResolver@2a5e86f4]
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'faviconHandlerMapping'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'requestMappingHandlerMapping'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'viewControllerHandlerMapping'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'beanNameHandlerMapping'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'resourceHandlerMapping'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'defaultServletHandlerMapping'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'welcomePageHandlerMapping'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'requestMappingHandlerAdapter'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'httpRequestHandlerAdapter'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'simpleControllerHandlerAdapter'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'errorAttributes'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'handlerExceptionResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator'
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - Unable to locate RequestToViewNameTranslator with name 'viewNameTranslator': using default [org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@4d6e2663]
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'beanNameViewResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'mvcViewResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'defaultViewResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'viewResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'thymeleafViewResolver'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.web.servlet.support.SessionFlashMapManager'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.web.servlet.support.SessionFlashMapManager'
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - Unable to locate FlashMapManager with name 'flashMapManager': using default [org.springframework.web.servlet.support.SessionFlashMapManager@7e30a5c5]
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - Published WebApplicationContext of servlet 'dispatcherServlet' as ServletContext attribute with name [org.springframework.web.servlet.FrameworkServlet.CONTEXT.dispatcherServlet]
+INFO http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 268 ms
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - Servlet 'dispatcherServlet' configured successfully
+DEBUG http-nio-8080-exec-1 org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter - Bound request context to thread: org.apache.catalina.connector.RequestFacade@5bca8f8d
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - DispatcherServlet with name 'dispatcherServlet' processing OPTIONS request for [/user/login]
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Looking up handler method for path /user/login
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Returning handler method [public java.lang.Object com.broadcast.app.controller.UserController.login(com.broadcast.app.entity.User)]
+DEBUG http-nio-8080-exec-1 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'userController'
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+DEBUG http-nio-8080-exec-1 org.springframework.web.servlet.DispatcherServlet - Successfully completed request
+DEBUG http-nio-8080-exec-1 org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter - Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@5bca8f8d
+DEBUG http-nio-8080-exec-2 org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter - Bound request context to thread: org.apache.catalina.connector.RequestFacade@5bca8f8d
+DEBUG http-nio-8080-exec-2 org.springframework.web.servlet.DispatcherServlet - DispatcherServlet with name 'dispatcherServlet' processing POST request for [/user/login]
+DEBUG http-nio-8080-exec-2 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Looking up handler method for path /user/login
+DEBUG http-nio-8080-exec-2 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Returning handler method [public java.lang.Object com.broadcast.app.controller.UserController.login(com.broadcast.app.entity.User)]
+DEBUG http-nio-8080-exec-2 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'userController'
+DEBUG http-nio-8080-exec-2 org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read [class com.broadcast.app.entity.User] as "application/json;charset=UTF-8" with [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@63fdffcd]
+DEBUG http-nio-8080-exec-2 org.springframework.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+DEBUG http-nio-8080-exec-2 org.springframework.jdbc.datasource.DataSourceUtils - Returning JDBC Connection to DataSource
+DEBUG http-nio-8080-exec-2 org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Written [com.broadcast.app.util.Result@fd39e79] as "application/json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@63fdffcd]
+DEBUG http-nio-8080-exec-2 org.springframework.web.servlet.DispatcherServlet - Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+DEBUG http-nio-8080-exec-2 org.springframework.web.servlet.DispatcherServlet - Successfully completed request
+DEBUG http-nio-8080-exec-2 org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter - Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@5bca8f8d
+DEBUG http-nio-8080-exec-3 org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter - Bound request context to thread: org.apache.catalina.connector.RequestFacade@5bca8f8d
+DEBUG http-nio-8080-exec-3 org.springframework.web.servlet.DispatcherServlet - DispatcherServlet with name 'dispatcherServlet' processing GET request for [/org/getOrgTree]
+DEBUG http-nio-8080-exec-3 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Looking up handler method for path /org/getOrgTree
+DEBUG http-nio-8080-exec-3 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Returning handler method [public java.lang.Object com.broadcast.app.controller.OrgController.getOrgTree(java.lang.String)]
+DEBUG http-nio-8080-exec-3 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'orgController'
+DEBUG http-nio-8080-exec-3 org.springframework.web.servlet.DispatcherServlet - Last-Modified value for [/org/getOrgTree] is: -1
+DEBUG http-nio-8080-exec-3 org.springframework.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+DEBUG http-nio-8080-exec-3 org.springframework.jdbc.datasource.DataSourceUtils - Returning JDBC Connection to DataSource
+DEBUG http-nio-8080-exec-3 org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Written [com.broadcast.app.util.Result@4f5f06d5] as "application/json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@63fdffcd]
+DEBUG http-nio-8080-exec-3 org.springframework.web.servlet.DispatcherServlet - Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+DEBUG http-nio-8080-exec-3 org.springframework.web.servlet.DispatcherServlet - Successfully completed request
+DEBUG http-nio-8080-exec-3 org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter - Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@5bca8f8d
+DEBUG http-nio-8080-exec-4 org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter - Bound request context to thread: org.apache.catalina.connector.RequestFacade@5bca8f8d
+DEBUG http-nio-8080-exec-4 org.springframework.web.servlet.DispatcherServlet - DispatcherServlet with name 'dispatcherServlet' processing OPTIONS request for [/appform/insert]
+DEBUG http-nio-8080-exec-4 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Looking up handler method for path /appform/insert
+DEBUG http-nio-8080-exec-4 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Returning handler method [public java.lang.Object com.broadcast.app.controller.AppformController.insertAppForm(com.broadcast.app.entity.Appform)]
+DEBUG http-nio-8080-exec-4 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'appformController'
+DEBUG http-nio-8080-exec-4 org.springframework.web.servlet.DispatcherServlet - Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+DEBUG http-nio-8080-exec-4 org.springframework.web.servlet.DispatcherServlet - Successfully completed request
+DEBUG http-nio-8080-exec-4 org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter - Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@5bca8f8d
+DEBUG http-nio-8080-exec-5 org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter - Bound request context to thread: org.apache.catalina.connector.RequestFacade@5bca8f8d
+DEBUG http-nio-8080-exec-5 org.springframework.web.servlet.DispatcherServlet - DispatcherServlet with name 'dispatcherServlet' processing POST request for [/appform/insert]
+DEBUG http-nio-8080-exec-5 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Looking up handler method for path /appform/insert
+DEBUG http-nio-8080-exec-5 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Returning handler method [public java.lang.Object com.broadcast.app.controller.AppformController.insertAppForm(com.broadcast.app.entity.Appform)]
+DEBUG http-nio-8080-exec-5 org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'appformController'
+DEBUG http-nio-8080-exec-5 org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read [class com.broadcast.app.entity.Appform] as "application/json;charset=UTF-8" with [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@63fdffcd]
+DEBUG http-nio-8080-exec-5 org.springframework.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+DEBUG http-nio-8080-exec-5 org.springframework.jdbc.datasource.DataSourceUtils - Returning JDBC Connection to DataSource
+DEBUG http-nio-8080-exec-5 org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Written [com.broadcast.app.util.Result@3851d699] as "application/json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@63fdffcd]
+DEBUG http-nio-8080-exec-5 org.springframework.web.servlet.DispatcherServlet - Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+DEBUG http-nio-8080-exec-5 org.springframework.web.servlet.DispatcherServlet - Successfully completed request
+DEBUG http-nio-8080-exec-5 org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter - Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@5bca8f8d
