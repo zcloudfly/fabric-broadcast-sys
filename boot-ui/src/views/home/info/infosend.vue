@@ -194,7 +194,7 @@ export default {
     },
     uploadSuccess(file){
       this.sendForm.files.push(file.data[0]);
-     // console.log(this.files);
+      console.log(this.files);
     }
 
   }

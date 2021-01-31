@@ -12,14 +12,19 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 @Component
 public class IpfsService {
 
-    @Value("${ipfs.server.url}")
+   /* @Value("${ipfs.server.url}")
     private String ipfsUrl;
     @Value("${file.temp.dir}")
-    private String fileUrl;
+    private String fileUrl;*/
+
+    private final static String  fileDir=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+    private  final static String rootPath = "fileTmp"+File.separator+fileDir+File.separator;
     //实例化ipfs节点对象
     private final IPFS ipfs = new IPFS(new MultiAddress("/ip4/192.168.91.138/tcp/5001"));
     /**
@@ -41,7 +46,8 @@ public class IpfsService {
 
     public String add(String fileDir) throws IOException {
         //上传文件
-        NamedStreamable.FileWrapper savefile = new NamedStreamable.FileWrapper(new File(fileDir));
+       String path= rootPath+fileDir;
+        NamedStreamable.FileWrapper savefile = new NamedStreamable.FileWrapper(new File(path));
         MerkleNode result = ipfs.add(savefile).get(0);
         return result.toJSONString();//返回结果里面获取保存文件的唯一hash，基于文件内容的 hash
     }

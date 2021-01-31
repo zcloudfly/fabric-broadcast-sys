@@ -17,7 +17,7 @@
 		 <module>common</module>
 		 <module>system</module>
 		 <module>fabric</module>
-		<!-- <module>ipfs</module>-->
+		<module>ipfs</module>
 		 <module>boot-ui</module>
 	 </modules>
 
@@ -97,9 +97,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.75</version>
 		</dependency>
 
 	</dependencies>

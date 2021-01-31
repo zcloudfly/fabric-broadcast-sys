@@ -4,11 +4,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/system/pom.xml" />
-        <option value="$PROJECT_DIR$/fabric/pom.xml" />
-        <option value="$PROJECT_DIR$/ipfs/pom.xml" />
-        <option value="$PROJECT_DIR$/common/pom.xml" />
-        <option value="$PROJECT_DIR$/boot-ui/pom.xml" />
       </list>
     </option>
   </component>

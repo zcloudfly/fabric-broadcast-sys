@@ -1,5 +1,6 @@
 package com.broadcast.app.controller;
 
+import com.broadcast.app.entity.Attach;
 import com.broadcast.app.util.ResultUtil;
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.tomcat.util.http.fileupload.util.Streams;
@@ -17,7 +18,10 @@ import javax.servlet.MultipartConfigElement;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -26,7 +30,7 @@ import java.util.List;
 public class FileController {
     private static final Logger logger = LoggerFactory.getLogger(FileController.class);
     //在文件操作中，不用/或者\最好，推荐使用File.separator
-    private final static String  fileDir="files";
+    private final static String  fileDir=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     private  final static String rootPath = "fileTmp"+File.separator+fileDir+File.separator;
 
     @RequestMapping("/upload")
@@ -36,9 +40,10 @@ public class FileController {
         if (!fileDir.exists() && !fileDir.isDirectory()) {
             fileDir.mkdirs();
         }
-        List<String> list = new ArrayList<>();
+        List<Attach> list = new ArrayList<>();
         try {
             if (multipartFiles != null && multipartFiles.length > 0) {
+                Attach attach = new Attach();
                 for(int i = 0;i<multipartFiles.length;i++){
                     try {
                         //以原来的名称命名,覆盖掉旧的
@@ -49,7 +54,9 @@ public class FileController {
                         //或者下面的
                         // Path path = Paths.get(storagePath);
                         //Files.write(path,multipartFiles[i].getBytes());
-                        list.add(multipartFiles[i].getOriginalFilename());
+                        attach.setFilename(multipartFiles[i].getOriginalFilename());
+                        attach.setFilesize(multipartFiles[i].getSize()+"");
+                        list.add(attach);
                     } catch (IOException e) {
                         logger.error(e.getMessage());
                     }

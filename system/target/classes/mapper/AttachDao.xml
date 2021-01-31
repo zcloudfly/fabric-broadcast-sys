@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.broadcast.app.dao.AttachDao">
+
+    <resultMap type="com.broadcast.app.entity.Attach" id="AttachMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="hashid" column="hashid" jdbcType="VARCHAR"/>
+        <result property="filename" column="filename" jdbcType="VARCHAR"/>
+        <result property="filesize" column="filesize" jdbcType="VARCHAR"/>
+        <result property="appformid" column="appformid" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="AttachMap">
+        select id,
+               hashid,
+               filename,
+               filesize,
+               appformid
+        from fbsys.attach
+        where id= #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="AttachMap">
+        select id,
+               hashid,
+               filename,
+               filesize,
+               appformid
+        from fbsys.attach limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="AttachMap">
+        select
+        id, hashid, filename, filesize, appformid
+        from fbsys.attach
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="hashid != null and hashid != ''">
+                and hashid = #{hashid}
+            </if>
+            <if test="filename != null and filename != ''">
+                and filename = #{filename}
+            </if>
+            <if test="filesize != null and filesize != ''">
+                and filesize = #{filesize}
+            </if>
+            <if test="appformid != null and appformid != ''">
+                and appformid = #{appformid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" >
+        insert into fbsys.attach(id, hashid, filename, filesize, appformid)
+        values (#{id}, #{hashid}, #{filename}, #{filesize}, #{appformid})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="" useGeneratedKeys="true">
+        insert into fbsys.attach(id, hashid, filename, filesize, appformid)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id}, #{entity.hashid}, #{entity.filename}, #{entity.filesize}, #{entity.appformid})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="" useGeneratedKeys="true">
+        insert into fbsys.attach(id, hashid, filename, filesize, appformid)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id}, #{entity.hashid}, #{entity.filename}, #{entity.filesize}, #{entity.appformid})
+        </foreach>
+        on duplicate key update
+        id = values(id) , hashid = values(hashid) , filename = values(filename) , filesize = values(filesize) ,
+        appformid = values(appformid)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update fbsys.attach
+        <set>
+            <if test="id != null and id != ''">
+                id = #{id},
+            </if>
+            <if test="hashid != null and hashid != ''">
+                hashid = #{hashid},
+            </if>
+            <if test="filename != null and filename != ''">
+                filename = #{filename},
+            </if>
+            <if test="filesize != null and filesize != ''">
+                filesize = #{filesize},
+            </if>
+            <if test="appformid != null and appformid != ''">
+                appformid = #{appformid},
+            </if>
+        </set>
+        where id= #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from fbsys.attach
+        where id= #{id}
+    </delete>
+
+</mapper>

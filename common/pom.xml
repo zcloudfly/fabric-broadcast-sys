@@ -11,6 +11,8 @@
 	<name>common</name>
 	<dependencies>
 
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+
 
 		
 	</dependencies>

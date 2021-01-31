@@ -15,7 +15,7 @@
       <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="4" parent="1" name="mysql">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+      <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="5" parent="1" name="performance_schema">
       <Collation>utf8mb4_0900_ai_ci</Collation>
@@ -907,111 +907,133 @@ SELECT|sys.sys_config
 </ObjectGrants>
     </user>
     <table id="283" parent="2" name="appform"/>
-    <table id="284" parent="2" name="org"/>
-    <table id="285" parent="2" name="user"/>
-    <column id="286" parent="283" name="id">
+    <table id="284" parent="2" name="attach"/>
+    <table id="285" parent="2" name="org"/>
+    <table id="286" parent="2" name="user"/>
+    <column id="287" parent="283" name="id">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="287" parent="283" name="finfoType">
+    <column id="288" parent="283" name="infoType">
       <Position>2</Position>
       <DataType>varchar(10)|0s</DataType>
     </column>
-    <column id="288" parent="283" name="title">
+    <column id="289" parent="283" name="title">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="289" parent="283" name="startTime">
-      <Position>4</Position>
-      <DataType>varchar(20)|0s</DataType>
-    </column>
-    <column id="290" parent="283" name="endTime">
-      <Position>5</Position>
-      <DataType>varchar(20)|0s</DataType>
-    </column>
-    <column id="291" parent="283" name="checkUser">
-      <Position>6</Position>
-      <DataType>varchar(20)|0s</DataType>
-    </column>
-    <column id="292" parent="283" name="checkUserId">
-      <Position>7</Position>
-      <DataType>varchar(32)|0s</DataType>
-    </column>
-    <column id="293" parent="283" name="distOrg">
-      <Position>8</Position>
-      <DataType>varchar(100)|0s</DataType>
-    </column>
-    <column id="294" parent="283" name="distOrgId">
-      <Position>9</Position>
-      <DataType>varchar(32)|0s</DataType>
-    </column>
-    <column id="295" parent="283" name="desc">
-      <Position>10</Position>
-      <DataType>varchar(255)|0s</DataType>
-    </column>
-    <column id="296" parent="283" name="sendUser">
-      <Position>11</Position>
-      <DataType>varchar(20)|0s</DataType>
-    </column>
-    <column id="297" parent="283" name="sendUserId">
-      <Position>12</Position>
-      <DataType>varchar(32)|0s</DataType>
-    </column>
-    <column id="298" parent="284" name="orgid">
-      <Position>1</Position>
-      <DataType>varchar(32)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="299" parent="284" name="orgname">
-      <Position>2</Position>
-      <DataType>varchar(32)|0s</DataType>
-    </column>
-    <column id="300" parent="284" name="orgparid">
-      <Position>3</Position>
-      <DataType>varchar(32)|0s</DataType>
-    </column>
-    <column id="301" parent="284" name="procode">
-      <Position>4</Position>
-      <DataType>varchar(10)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="302" parent="284" name="area">
-      <Position>5</Position>
-      <DataType>varchar(10)|0s</DataType>
-    </column>
-    <column id="303" parent="284" name="level">
-      <Position>6</Position>
-      <DataType>varchar(10)|0s</DataType>
-    </column>
-    <column id="304" parent="285" name="id">
-      <Position>1</Position>
-      <DataType>varchar(32)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="305" parent="285" name="acct">
-      <Position>2</Position>
-      <DataType>varchar(32)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="306" parent="285" name="name">
-      <Position>3</Position>
-      <DataType>varchar(50)|0s</DataType>
-    </column>
-    <column id="307" parent="285" name="ctime">
+    <column id="290" parent="283" name="startTime">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="308" parent="285" name="sts">
+    <column id="291" parent="283" name="endTime">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="292" parent="283" name="checkUser">
+      <Position>6</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="293" parent="283" name="checkUserId">
+      <Position>7</Position>
+      <DataType>varchar(32)|0s</DataType>
+    </column>
+    <column id="294" parent="283" name="distOrg">
+      <Position>8</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <column id="295" parent="283" name="distOrgId">
+      <Position>9</Position>
+      <DataType>varchar(32)|0s</DataType>
+    </column>
+    <column id="296" parent="283" name="descr">
+      <Position>10</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="297" parent="283" name="sendUser">
+      <Position>11</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <column id="298" parent="283" name="sendUserId">
+      <Position>12</Position>
+      <DataType>varchar(32)|0s</DataType>
+    </column>
+    <column id="299" parent="284" name="id">
+      <Position>1</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="300" parent="284" name="hashid">
+      <Position>2</Position>
+      <DataType>varchar(36)|0s</DataType>
+    </column>
+    <column id="301" parent="284" name="filename">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <column id="302" parent="284" name="filesize">
+      <Position>4</Position>
+      <DataType>varchar(10)|0s</DataType>
+    </column>
+    <column id="303" parent="284" name="appformid">
+      <Position>5</Position>
+      <DataType>varchar(32)|0s</DataType>
+    </column>
+    <column id="304" parent="285" name="orgid">
+      <Position>1</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="305" parent="285" name="orgname">
+      <Position>2</Position>
+      <DataType>varchar(32)|0s</DataType>
+    </column>
+    <column id="306" parent="285" name="orgparid">
+      <Position>3</Position>
+      <DataType>varchar(32)|0s</DataType>
+    </column>
+    <column id="307" parent="285" name="procode">
+      <Position>4</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="308" parent="285" name="area">
+      <Position>5</Position>
+      <DataType>varchar(10)|0s</DataType>
+    </column>
+    <column id="309" parent="285" name="level">
+      <Position>6</Position>
+      <DataType>varchar(10)|0s</DataType>
+    </column>
+    <column id="310" parent="286" name="id">
+      <Position>1</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="311" parent="286" name="acct">
+      <Position>2</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="312" parent="286" name="name">
+      <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="313" parent="286" name="ctime">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="314" parent="286" name="sts">
       <Position>5</Position>
       <DataType>char(1)|0s</DataType>
     </column>
-    <column id="309" parent="285" name="pwd">
+    <column id="315" parent="286" name="pwd">
       <Position>6</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="310" parent="285" name="orgid">
+    <column id="316" parent="286" name="orgid">
       <Position>7</Position>
       <DataType>varchar(32)|0s</DataType>
     </column>

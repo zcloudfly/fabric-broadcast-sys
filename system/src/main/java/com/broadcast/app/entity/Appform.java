@@ -1,6 +1,7 @@
 package com.broadcast.app.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * (Appform)实体类
@@ -35,6 +36,15 @@ public class Appform implements Serializable {
 
     private String senduserid;
 
+    private List<Attach> files;
+
+    public List<Attach> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<Attach> files) {
+        this.files = files;
+    }
 
     public String getId() {
         return id;
