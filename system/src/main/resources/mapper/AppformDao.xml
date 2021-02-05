@@ -17,6 +17,8 @@
         <result property="senduserid" column="sendUserId" jdbcType="VARCHAR"/>
     </resultMap>
 
+
+
     <!--查询单个-->
     <select id="queryById" resultMap="AppformMap">
         select id,

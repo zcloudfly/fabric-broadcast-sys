@@ -79,4 +79,12 @@ public class AppformController {
 
     }
 
+   /* @RequestMapping("insert")
+    public Object commitDataToBlockChain(@RequestBody   Appform sendForm ){
+        Appform appform = appformService.queryById(sendForm.getId());
+
+
+
+    }*/
+
 }

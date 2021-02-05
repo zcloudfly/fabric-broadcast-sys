@@ -1,45 +1,45 @@
 {
-  "name" : "Attach",
+  "name" : "Clientterm",
   "preName" : "",
   "comment" : null,
   "templateGroupName" : "Default",
   "fullColumn" : [ {
-    "name" : "id",
+    "name" : "clientid",
     "comment" : null,
     "type" : null,
     "shortType" : null,
     "custom" : false,
     "ext" : { }
   }, {
-    "name" : "hashid",
+    "name" : "orgid",
     "comment" : null,
     "type" : null,
     "shortType" : null,
     "custom" : false,
     "ext" : { }
   }, {
-    "name" : "filename",
+    "name" : "createtime",
     "comment" : null,
     "type" : null,
     "shortType" : null,
     "custom" : false,
     "ext" : { }
   }, {
-    "name" : "filesize",
+    "name" : "blockpeers",
     "comment" : null,
     "type" : null,
     "shortType" : null,
     "custom" : false,
     "ext" : { }
   }, {
-    "name" : "appformid",
+    "name" : "clientversion",
     "comment" : null,
     "type" : null,
     "shortType" : null,
     "custom" : false,
     "ext" : { }
   }, {
-    "name" : "type",
+    "name" : "ipfspeers",
     "comment" : null,
     "type" : null,
     "shortType" : null,

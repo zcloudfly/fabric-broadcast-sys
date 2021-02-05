@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.broadcast.app.dao.ClienttermDao">
+
+    <resultMap type="com.broadcast.app.entity.Clientterm" id="ClienttermMap">
+        <result property="clientid" column="clientid" jdbcType="VARCHAR"/>
+        <result property="orgid" column="orgid" jdbcType="VARCHAR"/>
+        <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
+        <result property="blockpeers" column="blockpeers" jdbcType="VARCHAR"/>
+        <result property="clientversion" column="clientversion" jdbcType="VARCHAR"/>
+        <result property="ipfspeers" column="ipfspeers" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ClienttermMap">
+        select clientid,
+               orgid,
+               createtime,
+               blockpeers,
+               clientversion,
+               ipfspeers
+        from fbsys.clientterm
+        where clientid= #{clientid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ClienttermMap">
+        select clientid,
+               orgid,
+               createtime,
+               blockpeers,
+               clientversion,
+               ipfspeers
+        from fbsys.clientterm limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ClienttermMap">
+        select
+        clientid, orgid, createtime, blockpeers, clientversion, ipfspeers
+        from fbsys.clientterm
+        <where>
+            <if test="clientid != null and clientid != ''">
+                and clientid = #{clientid}
+            </if>
+            <if test="orgid != null and orgid != ''">
+                and orgid = #{orgid}
+            </if>
+            <if test="createtime != null">
+                and createtime = #{createtime}
+            </if>
+            <if test="blockpeers != null and blockpeers != ''">
+                and blockpeers = #{blockpeers}
+            </if>
+            <if test="clientversion != null and clientversion != ''">
+                and clientversion = #{clientversion}
+            </if>
+            <if test="ipfspeers != null and ipfspeers != ''">
+                and ipfspeers = #{ipfspeers}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true">
+        insert into fbsys.clientterm(clientid, orgid, createtime, blockpeers, clientversion, ipfspeers)
+        values (#{clientid}, #{orgid}, #{createtime}, #{blockpeers}, #{clientversion}, #{ipfspeers})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="" useGeneratedKeys="true">
+        insert into fbsys.clientterm(clientid, orgid, createtime, blockpeers, clientversion, ipfspeers)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.clientid}, #{entity.orgid}, #{entity.createtime}, #{entity.blockpeers}, #{entity.clientversion},
+            #{entity.ipfspeers})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="" useGeneratedKeys="true">
+        insert into fbsys.clientterm(clientid, orgid, createtime, blockpeers, clientversion, ipfspeers)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.clientid}, #{entity.orgid}, #{entity.createtime}, #{entity.blockpeers}, #{entity.clientversion},
+            #{entity.ipfspeers})
+        </foreach>
+        on duplicate key update
+        clientid = values(clientid) , orgid = values(orgid) , createtime = values(createtime) , blockpeers =
+        values(blockpeers) , clientversion = values(clientversion) , ipfspeers = values(ipfspeers)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update fbsys.clientterm
+        <set>
+            <if test="clientid != null and clientid != ''">
+                clientid = #{clientid},
+            </if>
+            <if test="orgid != null and orgid != ''">
+                orgid = #{orgid},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="blockpeers != null and blockpeers != ''">
+                blockpeers = #{blockpeers},
+            </if>
+            <if test="clientversion != null and clientversion != ''">
+                clientversion = #{clientversion},
+            </if>
+            <if test="ipfspeers != null and ipfspeers != ''">
+                ipfspeers = #{ipfspeers},
+            </if>
+        </set>
+        where clientid= #{clientid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from fbsys.clientterm
+        where clientid= #{clientid}
+    </delete>
+
+</mapper>
