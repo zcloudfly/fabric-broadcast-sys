@@ -26,6 +26,10 @@ export default {
           url:'/stats'
         },
         {
+          name:'客户端管理',
+          url:'/client'
+        },
+        {
           name:'信息管理',
           url:'/info',
           child:[

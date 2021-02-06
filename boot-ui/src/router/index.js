@@ -27,10 +27,11 @@ const routes = [
         component: () => import( '../views/home/index/index.vue')
       },
       {
-        path: '/stats',
-        name: 'stats',
-        meta:{title:'数据统计'},
-        component: () => import( '../views/home/stats/index.vue')
+        path: '/client',
+        name: 'client',
+        meta:{title:'客户端管理'},
+        component: () => import( '../views/home/client/index.vue')
+
       },
       {
         path: '/info',
