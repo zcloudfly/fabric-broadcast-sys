@@ -34,7 +34,7 @@ export default {
           url:'/info',
           child:[
             {
-              name:'信息发布',
+              name:'信息申请',
               url:'/info/send'
             },
             {
@@ -49,15 +49,19 @@ export default {
         },
         {
           name:'用户管理',
-          url:'/wms1',
+          url:'/user',
           child:[
             {
-              name:'学员统计',
-              url:'/wms1/list'
+              name:'用户信息',
+              url:'/user/userindex'
             },
             {
-              name:'角色统计',
-              url:'/wms1/list2'
+              name:'角色信息',
+              url:'/user/roleindex'
+            },
+            {
+              name:'权限信息',
+              url:'/user/permission'
             },
           ]
         }

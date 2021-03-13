@@ -1,5 +1,6 @@
 package com.broadcast.app.service;
 
+import com.broadcast.app.controller.vo.ClienttermVo;
 import com.broadcast.app.entity.Clientterm;
 
 import java.util.List;
@@ -23,12 +24,17 @@ public interface ClienttermService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
+
      * @return 对象列表
      */
-    List<Clientterm> queryAllByLimit(int offset, int limit);
+    List<Clientterm> queryAllByLimit(ClienttermVo vo);
 
+    /**
+     *
+     * @param vo
+     * @return
+     */
+    public int selecttotal(ClienttermVo vo);
     /**
      * 新增数据
      *
@@ -52,5 +58,8 @@ public interface ClienttermService {
      * @return 是否成功
      */
     boolean deleteById(String id);
+
+
+    List<Clientterm> queryAll(Clientterm clientterm);
 
 }

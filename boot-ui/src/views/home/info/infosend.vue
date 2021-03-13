@@ -1,7 +1,7 @@
 <template>
   <div class="about">
 
-    <el-form :model="sendForm" :rules="rules" ref="sendForm" label-width="100px" class="demo-sendForm">
+    <el-form :model="sendForm" :rules="rules" ref="sendForm" v-bind:disabled="isformShow" label-width="100px" class="demo-sendForm">
       <el-row>
         <el-col :span="22">
       <el-form-item label="信息标题" prop="title">
@@ -44,7 +44,7 @@
       <el-row>
         <el-col :span=11>
           <el-form-item label="信息类型" prop="infotype">
-            <el-select v-model="sendForm.infotype" style="width: 415px" placeholder="请选择信息类型">
+            <el-select v-model="sendForm.infotype" style="width: 100%" placeholder="请选择信息类型">
               <el-option label="文本" value="txt"></el-option>
               <el-option label="图片" value="pic"></el-option>
               <el-option label="视频" value="mp4"></el-option>
@@ -53,7 +53,15 @@
         </el-col>
         <el-col :span="11">
           <el-form-item label="审批人" prop="checkuser">
-            <el-input v-model="sendForm.checkuser"  placeholder="审批人"></el-input>
+<!--            <el-input v-model="sendForm.checkuser"  placeholder="审批人"></el-input>-->
+            <el-select  v-model="sendForm.checkuserid" @change="chkuserchange" placeholder="请选择" style="width: 100%">
+              <el-option
+                  v-for="item in chkusers"
+                  :key="item.id"
+                  :label="item.name"
+                  :value="item.id">
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
@@ -65,7 +73,7 @@
           </el-form-item>
         </el-col>
         <el-col :span="1">
-          <el-button  @click="dialogTreeVisible = true" style="width: 49px">...</el-button>
+          <el-button  @click="dialogTreeVisible = true" style="width: 100%">...</el-button>
         </el-col>
       </el-row>
       <el-dialog title="机构选择" :visible.sync="dialogTreeVisible" >
@@ -98,8 +106,12 @@
 <!--      <el-input type="hidden" v-model="sendForm.distorgid"  ></el-input>-->
 
       <el-form-item style="text-align: center;">
-        <el-button type="primary" round @click="submitForm('sendForm')">立即创建</el-button>
-        <el-button round @click="resetForm('sendForm')">重置</el-button>
+
+        <el-button type="primary" round @click="submitForm('sendForm')" v-if="sendForm.id==''">立即创建</el-button>
+        <el-button round @click="resetForm('sendForm')" v-if="sendForm.id==''">重置</el-button>
+        <el-button type="primary" round @click="approveForm('sendForm')" v-if="sendForm.id!=''&&sendForm.sts=='0'">审批</el-button>
+
+
       </el-form-item>
     </el-form>
 
@@ -114,11 +126,15 @@ export default {
   },
   data() {
     return {
+      chkuer:{},
       orgName:'',
       dialogTreeVisible: false,
       fileList: [],
-
+      chkusers:[],
+      isShow:false,
+      isformShow:false,
       sendForm: {
+        id:'',
         title: '',
         distorg:'',
         distorgid:'',
@@ -126,6 +142,7 @@ export default {
         starttime: '',
         endtime: '',
         checkuser:'',
+        checkuserid:'',
         files:[],
         descr:'',
         senduser:'',
@@ -182,21 +199,93 @@ export default {
       }).then(res=>{
         let {code,data} = res.data;
         if(code=='0'){
-          alert(data);
+          const h = this.$createElement;
+          this.$notify({
+            title: '提示',
+            message: h('i', { style: 'color: teal'}, '创建成功')
+          });
+          this.$router.push({
+            path:'/info/select'
+          })
         }else{
           alert(data);
         }
       })
 
     },
+    approveForm(){
+      this.$axios({
+        method:'post',
+        url:'/appform/pushPlstToBlock',
+        data:this.sendForm
+      }).then(res=>{
+        let {code,data} = res.data;
+        if(code=='0'){
+          const h = this.$createElement;
+          this.$notify({
+            title: '提示',
+            message: h('i', { style: 'color: teal'}, '审批成功')
+          });
+          this.$router.push({
+            path:'/info/todo'
+          })
+        }else{
+          alert(data);
+        }
+      })
+    },
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
     uploadSuccess(file){
       this.sendForm.files.push(file.data[0]);
-      console.log(this.files);
+      //console.log(this.files);
+    },
+    getchkusers(){
+      let orgid=sessionStorage.getItem('userorg');
+      this.$axios({
+        method:'post',
+        url:'/user/getUserByWhere',
+        data: {orgid:orgid}
+      }).then(res=>{
+        let {code,data} = res.data;
+        if(code=='0'){
+          this.chkusers=data;
+        }else{
+          alert(data);
+        }
+      })
+    },
+    chkuserchange(event){
+      let chkusername='';
+      this.chkusers.forEach(function(user){
+        if(user.id==event){
+          chkusername=user.name
+        }
+      })
+      this.sendForm.checkuser=chkusername
     }
 
+  },
+  mounted() {
+    this.sendForm.id=this.$route.query.appformid
+    //console.log(this.sendForm.id)
+    if(this.sendForm.id){
+      this.isShow=true;
+      this.$axios({
+        method:'get',
+        url:'/appform/selectOne?id='+this.sendForm.id,
+      }).then(res=>{
+        let {code,data}=res.data
+        console.log(data)
+        if(code=='0'){
+          this.sendForm=data;
+        }
+      })
+    }else {
+      this.sendForm.id=''
+      this.getchkusers();
+    }
   }
 }
 </script>

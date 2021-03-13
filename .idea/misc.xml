@@ -4,6 +4,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/ipfs/pom.xml" />
+        <option value="$PROJECT_DIR$/fabric-gateway-java/pom.xml" />
       </list>
     </option>
   </component>

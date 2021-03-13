@@ -11,6 +11,13 @@ public class ResultUtil {
         result.setData(object);
         return result;
     }
+    public static Result successPage(int total,Object object) {
+        Result result = new Result();
+        result.setCode(0);
+        result.setMsg(total+"");
+        result.setData(object);
+        return result;
+    }
 
 
     public static Result success() {

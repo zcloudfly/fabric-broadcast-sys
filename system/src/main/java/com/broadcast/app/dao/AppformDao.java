@@ -1,5 +1,6 @@
 package com.broadcast.app.dao;
 
+import com.broadcast.app.controller.vo.AppformVo;
 import com.broadcast.app.entity.Appform;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -39,7 +40,9 @@ public interface AppformDao {
      * @param appform 实例对象
      * @return 对象列表
      */
-    List<Appform> queryAll(Appform appform);
+    List<Appform> queryAll(AppformVo appform);
+
+    int querytotal(AppformVo vo);
 
     /**
      * 新增数据

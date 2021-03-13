@@ -9,6 +9,7 @@
         <module name="boot-ui" />
         <module name="system" />
         <module name="common" />
+        <module name="fabric-gateway-java" />
         <module name="ipfs" />
         <module name="fabric" />
       </profile>
@@ -18,6 +19,7 @@
       <module name="common" target="1.8" />
       <module name="fabric" target="1.8" />
       <module name="fabric-broadcast-sys" target="1.8" />
+      <module name="fabric-gateway-java" target="8" />
       <module name="ipfs" target="1.8" />
       <module name="system" target="1.8" />
     </bytecodeTargetLevel>
@@ -27,6 +29,7 @@
       <module name="boot-ui" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="fabric" options="-parameters" />
+      <module name="fabric-gateway-java" options="-Xlint -Xlint:-options -Xlint:-processing -Werror" />
       <module name="ipfs" options="-parameters" />
       <module name="system" options="-parameters" />
     </option>

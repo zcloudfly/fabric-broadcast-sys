@@ -1,8 +1,9 @@
 package com.broadcast.app.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class PlayList {
+public class PlayList  implements Serializable {
     private String clientid;
     private String orgid;
     private List<ListData> data;
@@ -32,50 +33,4 @@ public class PlayList {
     }
 }
 
-class ListData{
-    private String name;
-    private String startdate;
-    private String staopdate;
-    private String type;
-    private String hashid;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getStartdate() {
-        return startdate;
-    }
-
-    public void setStartdate(String startdate) {
-        this.startdate = startdate;
-    }
-
-    public String getStaopdate() {
-        return staopdate;
-    }
-
-    public void setStaopdate(String staopdate) {
-        this.staopdate = staopdate;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getHashid() {
-        return hashid;
-    }
-
-    public void setHashid(String hashid) {
-        this.hashid = hashid;
-    }
-}

@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/fabric/fabric.iml" filepath="$PROJECT_DIR$/fabric/fabric.iml" />
       <module fileurl="file://$PROJECT_DIR$/fabric-broadcast-sys.iml" filepath="$PROJECT_DIR$/fabric-broadcast-sys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fabric-gateway-java/fabric-gateway-java.iml" filepath="$PROJECT_DIR$/fabric-gateway-java/fabric-gateway-java.iml" />
       <module fileurl="file://$PROJECT_DIR$/ipfs/ipfs.iml" filepath="$PROJECT_DIR$/ipfs/ipfs.iml" />
       <module fileurl="file://$PROJECT_DIR$/system/system.iml" filepath="$PROJECT_DIR$/system/system.iml" />
     </modules>

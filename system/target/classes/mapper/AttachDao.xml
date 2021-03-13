@@ -10,6 +10,8 @@
         <result property="appformid" column="appformid" jdbcType="VARCHAR"/>
     </resultMap>
 
+
+
     <!--查询单个-->
     <select id="queryById" resultMap="AttachMap">
         select id,

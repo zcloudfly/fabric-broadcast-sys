@@ -53,4 +53,11 @@ public interface AttachService {
      */
     boolean deleteById(String id);
 
+    /**
+     *
+     * @param attach
+     * @return
+     */
+    List<Attach> queryAll(Attach attach);
+
 }

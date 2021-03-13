@@ -2,6 +2,10 @@ package com.broadcast.app.util;
 
 import org.hyperledger.fabric.gateway.*;
 import org.hyperledger.fabric.gateway.impl.GatewayImpl;
+import org.hyperledger.fabric.gateway.impl.identity.GatewayUser;
+import org.hyperledger.fabric.sdk.*;
+import org.hyperledger.fabric.sdk.identity.X509Enrollment;
+import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -66,6 +70,23 @@ public class FabricUtil {
         Network network = gateway.getNetwork(channel);
         //获取合约对象
         return network.getContract(contract);
+    }
+
+    public static HFClient newMockClient() throws Exception{
+        X509Credentials credentials = new X509Credentials();
+        Path privateKeyPath = credentialPath.resolve(Paths.get("keystore", "priv_sk"));
+
+        Path certificatePath = credentialPath.resolve(Paths.get("signcerts", "Admin@org1.example.com-cert.pem"));
+
+        Enrollment enrollment = new X509Enrollment(getPrivateKey(privateKeyPath),  new String(readX509Certificate(certificatePath).getSignature()));
+        User user = new GatewayUser("user", "msp1", enrollment);
+
+        HFClient mockClient = Mockito.mock(HFClient.class);
+        Mockito.when(mockClient.getUserContext()).thenReturn(user);
+        Mockito.when(mockClient.newTransactionProposalRequest()).thenReturn(TransactionProposalRequest.newInstance(user));
+        Mockito.when(mockClient.newQueryProposalRequest()).thenReturn(QueryByChaincodeRequest.newInstance(user));
+
+        return mockClient;
     }
 
     private static X509Certificate readX509Certificate(final Path certificatePath) throws IOException, CertificateException {

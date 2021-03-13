@@ -3,19 +3,17 @@
     <el-header style=' height:150px'>
       <el-tabs v-model="activeName">
         <el-tab-pane label="查询区" name="first">
-          <el-form :inline="true" :model="formInline" class="demo-form-inline">
-            <el-form-item label="审批人">
-              <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+          <el-form :inline="true" :model="formInline" ref="formInline"  class="demo-form-inline">
+            <el-form-item label="设备编号">
+              <el-input v-model="formInline.clientid" placeholder="设备编号"></el-input>
             </el-form-item>
-            <el-form-item label="活动区域">
-              <el-select v-model="formInline.region" placeholder="活动区域">
-                <el-option label="区域一" value="shanghai"></el-option>
-                <el-option label="区域二" value="beijing"></el-option>
-              </el-select>
+            <el-form-item label="机构ID">
+              <el-input v-model="formInline.orgid" placeholder="机构ID"></el-input>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="onSubmit">查询</el-button>
             </el-form-item>
+            <el-button type="primary" @click="resetForm('formInline')">重置</el-button>
           </el-form>
 
         </el-tab-pane>
@@ -30,13 +28,12 @@
         label="设备编号"
         width="180">
       <template slot-scope="scope">
-        <i class="el-icon-time"></i>
-        <span style="margin-left: 10px">{{ scope.row.id }}</span>
+        <span style="margin-left: 10px">{{ scope.row.clientid }}</span>
       </template>
     </el-table-column>
 
     <el-table-column
-        label="机构名称"
+        label="机构ID"
         width="180">
       <template slot-scope="scope">
         <el-popover trigger="hover" placement="top">
@@ -50,14 +47,24 @@
     </el-table-column>
     <el-table-column
         label="注册日期"
-        width="180">
+        width="185">
       <template slot-scope="scope">
         <i class="el-icon-time"></i>
-        <span style="margin-left: 10px">{{ scope.row.createdate }}</span>
+        <span style="margin-left: 10px">{{ scope.row.createtime }}</span>
+      </template>
+    </el-table-column>
+    <el-table-column
+        label="区块编码"
+        width="440">
+      <template slot-scope="scope">
+        <span style="margin-left: 10px">{{ scope.row.code }}</span>
       </template>
     </el-table-column>
     <el-table-column label="操作">
       <template slot-scope="scope">
+        <el-button
+            size="mini"
+            @click="showPlst(scope.row)">播放列表</el-button>
         <el-button
             size="mini"
             @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -68,43 +75,87 @@
       </template>
     </el-table-column>
   </el-table>
+
+      <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="formInline.currentPage"
+          :page-sizes="[5, 10, 20, 40]"
+          :page-size="formInline.pagesize"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="total">
+      </el-pagination>
+      <el-dialog title="播放列表" :visible.sync="dialogVisible" >
+        <Ccliplst :clientid="searchClientid"></Ccliplst>
+      </el-dialog>
       </el-main>
   </el-container>
 </template>
 
 <script>
+import Ccliplst from "../../../components/Ccliplst"
+
 export default {
+  components:{
+    Ccliplst,
+  },
   data() {
     return {
+      searchClientid:'',
+      dialogVisible: false,
       formInline: {
-        user: '',
-        region: ''
+        clientid: '',
+        orgid: '',
+        currentPage:1, //初始页
+        pagesize:5,    // 每页的数据
       },
+      total:0,
       activeName:'first',
-      tableData: [{
-        createdate: '2016-05-02',
-        orgname: '***银行',
-        orgid: '000000',
-        id:'12344477'
-      }, {
-        createdate: '2016-05-02',
-        orgname: '***银行',
-        orgid: '000000',
-        id:'12344477'
-      }, {
-        createdate: '2016-05-02',
-        orgname: '***银行',
-        orgid: '000000',
-        id:'12344477'
-      }]
+      tableData: []
     }
   },
+  created(){
+    this.onSubmit();
+  },
   methods: {
+    onSubmit(){
+      this.$axios({
+        method:'post',
+        url:'/clientterm/selectbyquery',
+        data:this.formInline
+      }).then(res=>{
+        let {code,msg,data} = res.data;
+        if(code=='0'){
+          this.total=parseInt(msg);
+          this.tableData=data;
+        }else{
+          alert(data);
+        }
+      })
+    },
+    resetForm(formName) {
+      console.log(formName);
+      this.$refs[formName].resetFields();
+    },
+    // 初始页currentPage、初始每页数据数pagesize和数据data
+    handleSizeChange: function (size) {
+      this.pagesize = size;
+      console.log(this.pagesize)  //每页下拉显示数据
+    },
+    handleCurrentChange: function(currentPage){
+      this.currentPage = currentPage;
+      console.log(this.currentPage)  //点击第几页
+    },
     handleEdit(index, row) {
       console.log(index, row);
     },
     handleDelete(index, row) {
       console.log(index, row);
+    },
+    showPlst(row){
+      this.dialogVisible=true;
+      this.searchClientid=row.clientid;
+     // alert(row);
     }
   }
 }

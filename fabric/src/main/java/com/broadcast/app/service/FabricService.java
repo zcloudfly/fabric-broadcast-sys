@@ -1,5 +1,6 @@
 package com.broadcast.app.service;
 
+import com.broadcast.app.util.FabricUtil;
 import org.hyperledger.fabric.gateway.Contract;
 import org.hyperledger.fabric.gateway.Gateway;
 import org.hyperledger.fabric.gateway.Network;
@@ -17,13 +18,15 @@ public class FabricService {
 
     /**
      * 查询
-     * @param contract
+
      * @param args
      * @return
      */
-    public String query(Contract contract,String... args)throws Exception{
+    public String query(String chnnel,String chainCode,String... args)throws Exception{
             //查询合约对象evaluateTransaction
-        byte[] queryAResultBefore = contract.evaluateTransaction("query", args);
+        Gateway gateway = FabricUtil.geteWay();
+        Contract contact = FabricUtil.contact(gateway, chnnel, chainCode);
+        byte[] queryAResultBefore = contact.evaluateTransaction("query", args);
         String result=new String(queryAResultBefore, StandardCharsets.UTF_8);
 
         return result;
@@ -49,8 +52,6 @@ public class FabricService {
             return new String(invokeResult, StandardCharsets.UTF_8);
     }
 
-    public String test(){
-        return "jj";
-    }
+
 
 }

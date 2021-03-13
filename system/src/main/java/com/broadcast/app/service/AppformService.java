@@ -1,6 +1,8 @@
 package com.broadcast.app.service;
 
+import com.broadcast.app.controller.vo.AppformVo;
 import com.broadcast.app.entity.Appform;
+import com.broadcast.app.entity.Clientterm;
 
 import java.util.List;
 
@@ -30,6 +32,14 @@ public interface AppformService {
     List<Appform> queryAllByLimit(int offset, int limit);
 
     /**
+     * 查询多条数据
+     *
+
+     * @return 对象列表
+     */
+    List<Appform> queryAll(AppformVo appform);
+    int querytotal(AppformVo vo);
+    /**
      * 新增数据
      *
      * @param appform 实例对象
@@ -52,5 +62,6 @@ public interface AppformService {
      * @return 是否成功
      */
     boolean deleteById(String id);
+
 
 }

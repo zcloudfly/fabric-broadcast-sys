@@ -19,7 +19,8 @@
                name,
                ctime,
                sts,
-               pwd
+               pwd,
+               orgid
         from fbsys.user
         where id = #{id}
     </select>
@@ -43,13 +44,6 @@
                ctime,
                sts,
                pwd
-        from fbsys.user limit #{offset}, #{limit}
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="UserMap">
-        select
-        id, acct, name, ctime, sts, pwd
         from fbsys.user
         <where>
             <if test="id != null and id != ''">
@@ -61,16 +55,43 @@
             <if test="name != null and name != ''">
                 and name = #{name}
             </if>
-            <if test="ctime != null">
-                and ctime = #{ctime}
-            </if>
-            <if test="sts != null and sts != ''">
-                and sts = #{sts}
-            </if>
-            <if test="pwd != null and pwd != ''">
-                and pwd = #{pwd}
-            </if>
+
         </where>
+            limit #{offset}, #{limit}
+    </select>
+    <select id="queryAllTotal" resultType="java.lang.Integer">
+        select count(id) from fbsys.user
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="acct != null and acct != ''">
+                and acct = #{acct}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+
+        </where>
+    </select>
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="UserMap">
+        select
+        id, acct, name, ctime, sts, pwd,orgid
+        from fbsys.user
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="acct != null and acct != ''">
+                and acct = #{acct}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+
+        </where>
+        limit #{offset}, #{limit}
     </select>
 
     <!--新增所有列-->

@@ -7,13 +7,13 @@ public class OrgTree implements Serializable {
 
     private String id;
     private String label;
-    private List<Org> children;
+    private List<OrgTree> children;
 
-    public List<Org> getChildren() {
+    public List<OrgTree> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Org> children) {
+    public void setChildren(List<OrgTree> children) {
         this.children = children;
     }
 

@@ -76,4 +76,9 @@ public class AttachServiceImpl implements AttachService {
     public boolean deleteById(String id) {
         return this.attachDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<Attach> queryAll(Attach attach) {
+        return this.attachDao.queryAll(attach);
+    }
 }

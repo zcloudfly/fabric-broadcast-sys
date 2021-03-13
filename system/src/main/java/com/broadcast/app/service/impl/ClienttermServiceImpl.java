@@ -1,5 +1,6 @@
 package com.broadcast.app.service.impl;
 
+import com.broadcast.app.controller.vo.ClienttermVo;
 import com.broadcast.app.dao.ClienttermDao;
 import com.broadcast.app.entity.Clientterm;
 import com.broadcast.app.service.ClienttermService;
@@ -33,15 +34,17 @@ public class ClienttermServiceImpl implements ClienttermService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
+
      * @return 对象列表
      */
     @Override
-    public List<Clientterm> queryAllByLimit(int offset, int limit) {
-        return this.clienttermDao.queryAllByLimit(offset, limit);
+    public List<Clientterm> queryAllByLimit(ClienttermVo vo) {
+        return this.clienttermDao.queryAllByLimit(vo);
     }
-
+    @Override
+    public int selecttotal(ClienttermVo vo){
+        return this.clienttermDao.querytotal(vo);
+    }
     /**
      * 新增数据
      *
@@ -69,11 +72,18 @@ public class ClienttermServiceImpl implements ClienttermService {
     /**
      * 通过主键删除数据
      *
-     * @param id主键
+     * @param id 主键
      * @return 是否成功
      */
     @Override
     public boolean deleteById(String id) {
         return this.clienttermDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<Clientterm> queryAll(Clientterm clientterm) {
+        return this.clienttermDao.queryAll(clientterm);
+    }
+
+
 }

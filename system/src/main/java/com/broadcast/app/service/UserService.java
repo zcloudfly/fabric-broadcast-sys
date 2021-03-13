@@ -1,5 +1,6 @@
 package com.broadcast.app.service;
 
+import com.broadcast.app.controller.vo.UserVo;
 import com.broadcast.app.entity.User;
 
 import java.util.List;
@@ -20,7 +21,8 @@ public interface UserService {
      */
     User queryById(String id);
     User queryByPwdAndName(User user);
-
+    List<User> queryByWhere(UserVo user);
+    int  queryAllTotal(UserVo vo);
     /**
      * 查询多条数据
      *

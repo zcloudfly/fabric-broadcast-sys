@@ -57,23 +57,14 @@ public class IpfsService {
      * @throws IOException
      */
 
-    public  void download(String hash) throws IOException {
+    public  byte[] download(String hash) throws IOException {
         //文件hash
         //String hash="QmcAMXwHfxkQVQaSyTqG72fNbpthhLNNPRo1zzf6W9KwUf";
         //保存的文件路径
-        String filename="D:/vv.txt";
+       // String filename="D:/vv.txt";
         Multihash filePointer = Multihash.fromBase58(hash);
         byte[] data = ipfs.cat(filePointer);
-        if(data != null){
-            File file  = new File(filename);
-            if(file.exists()){
-                file.delete();
-            }
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(data,0,data.length);
-            fos.flush();
-            fos.close();
-        }
+     return data;
     }
 
     /**

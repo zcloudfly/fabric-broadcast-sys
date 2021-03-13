@@ -1,5 +1,7 @@
 package com.broadcast.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,6 +18,7 @@ public class Clientterm implements Serializable {
 
     private String orgid;
 
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createtime;
 
     private String blockpeers;
@@ -24,6 +27,15 @@ public class Clientterm implements Serializable {
 
     private String ipfspeers;
 
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getClientid() {
         return clientid;

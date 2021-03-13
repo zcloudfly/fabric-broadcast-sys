@@ -1,5 +1,6 @@
 package com.broadcast.app.service.impl;
 
+import com.broadcast.app.controller.vo.UserVo;
 import com.broadcast.app.dao.UserDao;
 import com.broadcast.app.entity.User;
 import com.broadcast.app.service.UserService;
@@ -35,6 +36,16 @@ public class UserServiceImpl implements UserService {
         return userDao.queryByPwdAndName(user);
     }
 
+    @Override
+    public List<User> queryByWhere(UserVo user) {
+        return userDao.queryAll(user);
+    }
+
+    @Override
+    public int queryAllTotal(UserVo vo) {
+        return this.userDao.queryAllTotal(vo);
+    }
+
     /**
      * 查询多条数据
      *
@@ -44,6 +55,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<User> queryAllByLimit(int offset, int limit) {
+
         return this.userDao.queryAllByLimit(offset, limit);
     }
 

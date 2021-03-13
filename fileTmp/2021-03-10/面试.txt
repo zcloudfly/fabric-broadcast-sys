@@ -1,0 +1,59 @@
+前端：
+ajax 同步和异步 
+jquery选择器
+1.跨域 jsonp CORS
+2.vue生命周期函数/组件之间如何传值
+beforeCreate
+created
+beforeMount
+mounted
+beforeUpdate
+updated
+beforeDestroy
+destroyed
+3.JSON.parse:将json字符串转换成json对象/JSON.stringify():将json对象转换成json字符串
+4、数组方法pop() push() unshift() shift()
+栈方法： 
+push()尾部添加，返回 数组长度 
+pop()尾部删除，返回 被删除的元素
+队列方法： 
+unshift()头部添加 ，返回 数组长度 
+shift()头部删除，返回被删除的元素
+3、数组 split() join() 的区别
+split()将字符串按照指定的字符分割成一个数组，并返回 
+join()将数组用指定的字符连接成一个字符串，并返回
+4、选择器
+Java：
+1、ArrayList 和 LinkedList 有什么区别
+2、线程间通信
+一、使用同一个共享变量控制
+Synchronized、wait、notify
+Lock、Condition
+利用volatile
+利用AtomicInteger
+二、PipedInputStream、PipedOutputStream
+三、利用BlockingQueue
+4、String和StringBuffer,stringBuilder的区别?
+
+String和StringBuffer主要区别是性能:String是不可变对象,每次对String类型进行操作都等同于产生了一个新的String对象,然后指向新的String对象.所以尽量不要对String进行大量的拼接操作,否则会产生很多临时对象,导致GC开始工作,影响系统性能.
+
+StringBuffer是对象本身操作,而不是产生新的对象,因此在有大量拼接的情况下,我们建议使用StringBuffer(线程安全).
+5、spring 中@Autowired和@Resource之间的区别，  @RequestMapping注解作用 ,@ResponseBody    @Requestbody
+数据库：
+查询优化   select 多表关联  多条件 子查询 查询很慢  优化建议  
+
+框架：
+1、mybatis 一二级缓存
+1）一级缓存: 基于 PerpetualCache 的 HashMap 本地缓存，其存储作用域为 Session，当 Session flush 或 close 之后，该 Session 中的所有 Cache 就将清空，默认打开一级缓存。
+
+2）二级缓存与一级缓存其机制相同，默认也是采用 PerpetualCache，HashMap 存储，不同在于其存储作用域为 Mapper(Namespace)，并且可自定义存储源，如 Ehcache。默认不打开二级缓存，要开启二级缓存，使用二级缓存属性类需要实现Serializable序列化接口(可用来保存对象的状态),可在它的映射文件中配置<cache/> ；
+
+3）对于缓存数据更新机制，当某一个作用域(一级缓存 Session/二级缓存Namespaces)的进行了C/U/D 操作后，默认该作用域下所有 select 中的缓存将被 clear 掉并重新更新，如果开启了二级缓存，则只根据配置判断是否刷新。
+
+1、在mapper中如何传递多个参数?（1）第一种：whereuser_name = #{0} anduser_area=#{1}  （2）第二种： 使用 @param 注解（3）第三种：多个参数封装成map
+2、SpringMVC默认是单例的/Spring的IOC容器管理的bean默认是单实例的
+3、dubble（tcp）/springcloud(http)各服务之间通信，对Restful和Rpc(dubble)这2种方式如何做选择
+4、nginx 负载均衡策略
+6、Redis怎么保持缓存与数据库一致性？“Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合),单线程，持久化
+6、git常用命令
+7.工作流

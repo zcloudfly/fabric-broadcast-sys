@@ -40,9 +40,15 @@ const routes = [
         component: () => import( '../views/home/info/infomanage.vue'),
         children:[
           {
+            path: '/info/detail',
+            name: 'info/detail',
+            meta:{title:'信息详情'},
+            component: () => import( '../views/home/info/infosend.vue')
+          },
+          {
             path: '/info/send',
             name: 'info/send',
-            meta:{title:'信息发布'},
+            meta:{title:'信息申请'},
             component: () => import( '../views/home/info/infosend.vue')
           },{
             path: '/info/select',
@@ -57,6 +63,30 @@ const routes = [
           },
         ]
       },
+      {
+        path: '/user',
+        name: 'user',
+        meta:{title:'用户管理'},
+        component: () => import( '../views/home/user/mainindex.vue'),
+        children:[
+          {
+            path: '/user/userindex',
+            name: '/user/userindex',
+            meta:{title:'用户信息'},
+            component: () => import( '../views/home/user/userindex.vue')
+          },{
+            path: '/user/roleindex',
+            name: '/user/roleindex',
+            meta:{title:'角色信息'},
+            component: () => import( '../views/home/user/roleindex.vue')
+          },{
+            path: '/user/permission',
+            name: '/user/permission',
+            meta:{title:'权限信息'},
+            component: () => import( '../views/home/user/permission.vue')
+          }
+            ]
+      }
     ]
   }
 ]

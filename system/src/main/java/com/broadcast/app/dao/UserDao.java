@@ -1,5 +1,6 @@
 package com.broadcast.app.dao;
 
+import com.broadcast.app.controller.vo.UserVo;
 import com.broadcast.app.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -40,8 +41,8 @@ public interface UserDao {
      * @param user 实例对象
      * @return 对象列表
      */
-    List<User> queryAll(User user);
-
+    List<User> queryAll(UserVo user);
+    int  queryAllTotal(UserVo vo);
     /**
      * 新增数据
      *

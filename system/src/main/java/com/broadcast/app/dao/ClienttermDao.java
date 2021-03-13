@@ -1,5 +1,6 @@
 package com.broadcast.app.dao;
 
+import com.broadcast.app.controller.vo.ClienttermVo;
 import com.broadcast.app.entity.Clientterm;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -26,20 +27,18 @@ public interface ClienttermDao {
     /**
      * 查询指定行数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
      * @return 对象列表
      */
-    List<Clientterm> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<Clientterm> queryAllByLimit(ClienttermVo vo);
 
-
+    List<Clientterm> queryAll(Clientterm clientterm);
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param clientterm 实例对象
+     * @param vo 实例对象
      * @return 对象列表
      */
-    List<Clientterm> queryAll(Clientterm clientterm);
+    int querytotal(ClienttermVo vo);
 
     /**
      * 新增数据

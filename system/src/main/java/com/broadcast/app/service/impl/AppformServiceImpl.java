@@ -1,5 +1,6 @@
 package com.broadcast.app.service.impl;
 
+import com.broadcast.app.controller.vo.AppformVo;
 import com.broadcast.app.dao.AppformDao;
 import com.broadcast.app.entity.Appform;
 import com.broadcast.app.service.AppformService;
@@ -40,6 +41,16 @@ public class AppformServiceImpl implements AppformService {
     @Override
     public List<Appform> queryAllByLimit(int offset, int limit) {
         return this.appformDao.queryAllByLimit(offset, limit);
+    }
+
+    @Override
+    public List<Appform> queryAll(AppformVo appform) {
+        return this.appformDao.queryAll(appform);
+    }
+
+    @Override
+    public int querytotal(AppformVo vo) {
+        return this.appformDao.querytotal(vo);
     }
 
     /**

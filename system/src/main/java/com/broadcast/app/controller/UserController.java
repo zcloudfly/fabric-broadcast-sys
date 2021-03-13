@@ -1,5 +1,6 @@
 package com.broadcast.app.controller;
 
+import com.broadcast.app.controller.vo.UserVo;
 import com.broadcast.app.entity.User;
 import com.broadcast.app.service.FabricService;
 import com.broadcast.app.service.UserService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,10 +41,10 @@ public class UserController {
     public User selectOne(String id) {
         return this.userService.queryById(id);
     }
-    @GetMapping("test")
+   /* @GetMapping("test")
     public String  t(){
-        return fs.test();
-    }
+       // return fs.test();
+    }*/
 
     @PostMapping(value = "/login")
     @CrossOrigin
@@ -55,6 +57,14 @@ public class UserController {
          }else{
              return ResultUtil.success(resuser);
          }
+    }
+    @PostMapping(value = "/getUserByWhere")
+    @CrossOrigin
+    @ResponseBody
+    public Object getUserByWhere(@RequestBody UserVo vo){
+        int total= this.userService.queryAllTotal(vo);
+        List<User> users=this.userService.queryByWhere(vo);
+        return ResultUtil.successPage(total,users);
     }
 
 }

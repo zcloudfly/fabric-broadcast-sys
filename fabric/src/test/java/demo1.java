@@ -62,7 +62,7 @@ public class demo1 {
             System.out.println("交易前："+new String(queryAResultBefore, StandardCharsets.UTF_8));
 
             // 创建并且提交交易
-           Collection<Peer> peers = network.getChannel().getPeers(EnumSet.of(Peer.PeerRole.ENDORSING_PEER));
+            Collection<Peer> peers = network.getChannel().getPeers(EnumSet.of(Peer.PeerRole.ENDORSING_PEER));
             byte[] invokeResult = contract.createTransaction("invoke")
                     .setEndorsingPeers(peers)
                     .submit("initMarble","1","blue","10","lisi");

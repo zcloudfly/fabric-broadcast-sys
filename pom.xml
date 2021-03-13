@@ -19,6 +19,7 @@
 		 <module>fabric</module>
 		<module>ipfs</module>
 		 <module>boot-ui</module>
+		 <module>fabric-gateway-java</module>
 	 </modules>
 
 	<properties>

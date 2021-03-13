@@ -3,6 +3,7 @@ package com.broadcast.app.controller;
 import com.broadcast.app.service.FabricService;
 import com.broadcast.app.util.FabricUtil;
 import com.broadcast.app.util.Result;
+
 import com.broadcast.app.util.ResultUtil;
 import org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock;
 import org.hyperledger.fabric.gateway.Contract;
@@ -33,7 +34,7 @@ public class FabricController {
         try {
             Gateway gateway = FabricUtil.geteWay();
             Contract contact = FabricUtil.contact(gateway, channel, cont);
-            query = service.query(contact, args);
+            query = service.query(channel,cont, args);
         }catch (Exception e){
             e.printStackTrace();
             return ResultUtil.error(e.getMessage());
@@ -45,7 +46,7 @@ public class FabricController {
         try {
             Gateway gateway = FabricUtil.geteWay();
             Contract contact = FabricUtil.contact(gateway, channel, cont);
-            return ResultUtil.success(service.invoke(gateway, channel, cont));
+            return ResultUtil.success(service.invoke(gateway, channel, cont,args));
         }catch (Exception e){
             e.printStackTrace();
             return ResultUtil.error(e.getMessage());
