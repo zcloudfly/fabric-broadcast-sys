@@ -23,7 +23,16 @@ export default {
         },
         {
           name:'系统管理',
-          url:'/stats'
+          //url:'/sys',
+          child:[
+            {
+              name:'Fabric网络',
+              url:'/sys/fabric'
+            },
+            {
+              name:'IPFS网络',
+              url:'/sys/ipfs'
+            }]
         },
         {
           name:'客户端管理',
@@ -49,7 +58,7 @@ export default {
         },
         {
           name:'用户管理',
-          url:'/user',
+         // url:'/user',
           child:[
             {
               name:'用户信息',

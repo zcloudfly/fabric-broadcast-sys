@@ -10,6 +10,9 @@
         <result property="sts" column="sts" jdbcType="VARCHAR"/>
         <result property="pwd" column="pwd" jdbcType="VARCHAR"/>
         <result property="orgid" column="orgid" jdbcType="VARCHAR"/>
+        <result property="orgName" column="orgname" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="tel" column="tel" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
@@ -69,15 +72,16 @@
                 and acct = #{acct}
             </if>
             <if test="name != null and name != ''">
-                and name = #{name}
+                and name like CONCAT(#{name},'%')
             </if>
 
         </where>
     </select>
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="UserMap">
+     select u.*,o.orgname  from (
         select
-        id, acct, name, ctime, sts, pwd,orgid
+        id, acct, name, ctime, sts, pwd,orgid,tel,email
         from fbsys.user
         <where>
             <if test="id != null and id != ''">
@@ -87,17 +91,17 @@
                 and acct = #{acct}
             </if>
             <if test="name != null and name != ''">
-                and name = #{name}
+                and name like CONCAT(#{name},'%')
             </if>
-
         </where>
+        )u join org o on u.orgid=o.orgid
         limit #{offset}, #{limit}
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into fbsys.user(acct, name, ctime, sts, pwd)
-        values (#{acct}, #{name}, #{ctime}, #{sts}, #{pwd})
+    <insert id="insert"  useGeneratedKeys="true">
+        insert into fbsys.user(id,acct, name, ctime, sts, pwd,email,tel,orgid)
+        values (#{id},#{acct}, #{name}, #{ctime}, #{sts}, #{pwd},#{email},#{tel},#{orgid})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -133,6 +137,12 @@
             </if>
             <if test="sts != null and sts != ''">
                 sts = #{sts},
+            </if>
+            <if test="tel != null and tel != ''">
+                tel = #{tel},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
             </if>
             <if test="pwd != null and pwd != ''">
                 pwd = #{pwd},

@@ -51,7 +51,18 @@ public class AppformController {
     @GetMapping("selectOne")
     public Result selectOne( String id) {
         Appform appform = this.appformService.queryById(id);
+        Attach attach = new Attach();
+        attach.setAppformid(id);
+        List<Attach> files = this.attachService.queryAll(attach);
+        appform.setFiles(files);
+
         return ResultUtil.success(appform);
+    }
+
+    @GetMapping("deletetOne")
+    public Result deletetOne( String id) {
+        this.appformService.deleteById(id);
+        return ResultUtil.success();
     }
 
 
@@ -175,5 +186,9 @@ public class AppformController {
        vo.setLimit( offset + pageSize * (pageNum > 0 ? 1 : 0));
        List<Appform> appform=this.appformService.queryAll(vo);
         return ResultUtil.successPage(total,appform);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(System.currentTimeMillis());
     }
 }

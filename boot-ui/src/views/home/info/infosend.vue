@@ -54,12 +54,12 @@
         <el-col :span="11">
           <el-form-item label="审批人" prop="checkuser">
 <!--            <el-input v-model="sendForm.checkuser"  placeholder="审批人"></el-input>-->
-            <el-select  v-model="sendForm.checkuserid" @change="chkuserchange" placeholder="请选择" style="width: 100%">
+            <el-select  v-model="sendForm.checkuser" @change="chkuserchange" placeholder="请选择" style="width: 100%">
               <el-option
                   v-for="item in chkusers"
                   :key="item.id"
                   :label="item.name"
-                  :value="item.id">
+                  :value="item.name">
               </el-option>
             </el-select>
           </el-form-item>
@@ -92,24 +92,36 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <el-form-item label="素材选择" prop="checkuser">
+      <el-row>
+        <el-col :span="22">
+
+
+      <el-form-item label="素材列表" >
       <el-upload
+          v-if="sendForm.id==''"
           class="upload-demo"
           action="http://localhost:8080/file/upload"
           :on-success="uploadSuccess"
           :file-list="fileList">
-        <el-button size="small" type="primary">点击上传</el-button>&nbsp;
+        <el-button size="mini" type="primary" >点击上传</el-button>&nbsp;
         <span style="font-size:12px">只能上传jpg/png/txt/mp4文件，且不超过500kb</span>
       </el-upload>
+        <el-card class="box-card" v-if="sendForm.id!=''&&sendForm.sts=='0'">
+          <div v-for="o in sendForm.files" :key="o.id" class="text item">
+            {{ o.filename }}
+          </div>
+        </el-card>
 
       </el-form-item>
+        </el-col>
+      </el-row>
 <!--      <el-input type="hidden" v-model="sendForm.distorgid"  ></el-input>-->
 
       <el-form-item style="text-align: center;">
 
-        <el-button type="primary" round @click="submitForm('sendForm')" v-if="sendForm.id==''">立即创建</el-button>
-        <el-button round @click="resetForm('sendForm')" v-if="sendForm.id==''">重置</el-button>
-        <el-button type="primary" round @click="approveForm('sendForm')" v-if="sendForm.id!=''&&sendForm.sts=='0'">审批</el-button>
+        <el-button type="primary" round @click="submitForm('sendForm')" v-if="sendForm.id==''" size="mini">立即创建</el-button>
+        <el-button round @click="resetForm('sendForm')" v-if="sendForm.id==''" size="mini">重置</el-button>
+        <el-button type="primary" round size="mini" @click="approveForm('sendForm')" v-if="sendForm.id!=''&&sendForm.sts=='0'">审批</el-button>
 
 
       </el-form-item>
@@ -246,7 +258,7 @@ export default {
       this.$axios({
         method:'post',
         url:'/user/getUserByWhere',
-        data: {orgid:orgid}
+        data: {orgid:orgid,pagesize:'100',currentPage:'1'}
       }).then(res=>{
         let {code,data} = res.data;
         if(code=='0'){
@@ -257,13 +269,13 @@ export default {
       })
     },
     chkuserchange(event){
-      let chkusername='';
+      let chkuserid='';
       this.chkusers.forEach(function(user){
-        if(user.id==event){
-          chkusername=user.name
+        if(user.name==event){
+          chkuserid=user.id
         }
       })
-      this.sendForm.checkuser=chkusername
+      this.sendForm.checkuserid=chkuserid
     }
 
   },
@@ -277,7 +289,7 @@ export default {
         url:'/appform/selectOne?id='+this.sendForm.id,
       }).then(res=>{
         let {code,data}=res.data
-        console.log(data)
+        //console.log(data)
         if(code=='0'){
           this.sendForm=data;
         }

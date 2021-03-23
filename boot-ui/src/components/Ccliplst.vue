@@ -12,19 +12,21 @@
     <el-table-column
         prop="startdate"
         label="开始时间"
-        width="180">
+        width="100">
     </el-table-column>
     <el-table-column
         prop="staopdate"
-        label="结束时间">
+        label="结束时间"
+        width="100">
     </el-table-column>
     <el-table-column
         prop="type"
-        label="类型">
+        label="类型"
+        width="80">
     </el-table-column>
     <el-table-column
         prop="hashid"
-        label="地址哈希码">
+        label="哈希(点击下载)">
       <template slot-scope="scope">
         <el-link type="primary" @click="download(scope.row.hashid,scope.row.name)">{{scope.row.hashid}}</el-link>
 <!--        <a @click="download(scope.row.hashid,scope.row.name)">{{scope.row.hashid}}</a>-->

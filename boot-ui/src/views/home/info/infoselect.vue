@@ -1,23 +1,24 @@
 <template>
   <el-container>
-    <el-header style=' height:150px'>
+    <el-header style=' height:100px'>
       <el-tabs v-model="activeName">
         <el-tab-pane label="查询区" name="first">
           <el-form :inline="true" :model="formInline" ref="formInline"  class="demo-form-inline">
             <el-form-item label="申请单号">
-              <el-input v-model="formInline.id" placeholder="申请单号"></el-input>
+              <el-input v-model="formInline.id" placeholder="申请单号" size="mini"></el-input>
             </el-form-item>
             <el-form-item label="状态" prop="infotype">
-              <el-select v-model="formInline.sts" style="width: 100%" placeholder="请选择信息类型">
+              <el-select v-model="formInline.sts" style="width: 100%" placeholder="请选择信息类型" size="mini">
                 <el-option label="已审批" value="1"></el-option>
                 <el-option label="未审批" value="0" selected="true"></el-option>
 <!--                <el-option label="未提交" value="-"></el-option>-->
               </el-select>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="onSubmit">查询</el-button>
+              <el-button type="primary" @click="onSubmit" size="mini">查询</el-button>
+              <el-button type="primary" @click="resetForm('formInline')" size="mini">重置</el-button>
             </el-form-item>
-            <el-button type="primary" @click="resetForm('formInline')">重置</el-button>
+
           </el-form>
 
         </el-tab-pane>

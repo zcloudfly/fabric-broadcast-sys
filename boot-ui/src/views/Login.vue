@@ -66,6 +66,7 @@ export default {
             sessionStorage.setItem('user',data.name);
             sessionStorage.setItem('userorg',data.orgid);
             sessionStorage.setItem('userid',data.id);
+            sessionStorage.setItem('acct',data.acct);
             this.$router.push('/index')
           }else {
             alert(msg);

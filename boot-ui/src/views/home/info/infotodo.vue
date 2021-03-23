@@ -1,17 +1,18 @@
 <template>
   <el-container>
-    <el-header style=' height:150px'>
+    <el-header style=' height:100px'>
       <el-tabs v-model="activeName">
         <el-tab-pane label="查询区" name="first">
           <el-form :inline="true" :model="formInline" ref="formInline"  class="demo-form-inline">
             <el-form-item label="申请单号">
-              <el-input v-model="formInline.id" placeholder="申请单号"></el-input>
+              <el-input v-model="formInline.id" placeholder="申请单号" size="mini"></el-input>
             </el-form-item>
 
             <el-form-item>
-              <el-button type="primary" @click="onSubmit">查询</el-button>
+              <el-button type="primary" @click="onSubmit" size="mini">查询</el-button>
+              <el-button type="primary" @click="resetForm('formInline')" size="mini">重置</el-button>
             </el-form-item>
-            <el-button type="primary" @click="resetForm('formInline')">重置</el-button>
+
           </el-form>
 
         </el-tab-pane>

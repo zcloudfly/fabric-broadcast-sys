@@ -39,7 +39,7 @@ public class Appform implements Serializable {
     private String sts;
 
     private Date createtime;
-
+    private List<Attach> files;
     public Date getCreatetime() {
         return createtime;
     }
@@ -56,7 +56,7 @@ public class Appform implements Serializable {
         this.sts = sts;
     }
 
-    private List<Attach> files;
+
 
     public List<Attach> getFiles() {
         return files;

@@ -26,6 +26,36 @@ public class User implements Serializable {
 
     private String orgid;
 
+
+
+    private String orgName;
+    private String email;
+    private String tel;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
     public String getOrgid() {
         return orgid;
     }

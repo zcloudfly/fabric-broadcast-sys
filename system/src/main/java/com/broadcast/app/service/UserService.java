@@ -23,6 +23,7 @@ public interface UserService {
     User queryByPwdAndName(User user);
     List<User> queryByWhere(UserVo user);
     int  queryAllTotal(UserVo vo);
+
     /**
      * 查询多条数据
      *

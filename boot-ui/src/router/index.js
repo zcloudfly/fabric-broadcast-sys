@@ -25,6 +25,24 @@ const routes = [
         name: 'index',
         meta:{title:'首页'},
         component: () => import( '../views/home/index/index.vue')
+      },{
+        path: '/sys',
+        name: 'sys',
+        meta:{title:'系统管理'},
+        component: () => import( '../views/home/sys/index.vue'),
+        children:[
+          {
+            path: '/sys/fabric',
+            name: 'sys/fabric',
+            meta:{title:'Fabric网络'},
+            component: () => import( '../views/home/sys/fabric.vue')
+          },{
+            path: '/sys/ipfs',
+            name: 'sys/ipfs',
+            meta:{title:'IPFS网络'},
+            component: () => import( '../views/home/sys/ipfs.vue')
+          }
+        ]
       },
       {
         path: '/client',

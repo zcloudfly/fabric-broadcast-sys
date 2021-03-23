@@ -7,7 +7,7 @@
      <el-container>
         <!-- 头部 -->
         <el-header>
-          <el-button class="exit" type="primary" @click="goBack()">退出</el-button>
+          <el-button class="exit" type="primary" @click="goBack()" size="mini">退出</el-button>
           <!-- 面包屑 -->
           <Breadcumb /> 
         </el-header>

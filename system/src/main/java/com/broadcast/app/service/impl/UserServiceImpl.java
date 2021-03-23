@@ -46,6 +46,8 @@ public class UserServiceImpl implements UserService {
         return this.userDao.queryAllTotal(vo);
     }
 
+
+
     /**
      * 查询多条数据
      *

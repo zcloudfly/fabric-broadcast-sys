@@ -10,9 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * (User)表控制层
@@ -22,6 +20,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("user")
+@CrossOrigin
 public class UserController {
     @Resource
     private FabricService fs;
@@ -47,8 +46,7 @@ public class UserController {
     }*/
 
     @PostMapping(value = "/login")
-    @CrossOrigin
-    @ResponseBody
+
     public Object login(@RequestBody User user){
 
         User resuser = this.userService.queryByPwdAndName(user);
@@ -59,12 +57,40 @@ public class UserController {
          }
     }
     @PostMapping(value = "/getUserByWhere")
-    @CrossOrigin
-    @ResponseBody
     public Object getUserByWhere(@RequestBody UserVo vo){
         int total= this.userService.queryAllTotal(vo);
         List<User> users=this.userService.queryByWhere(vo);
         return ResultUtil.successPage(total,users);
+    }
+
+    @PostMapping(value = "/addUser")
+    public Object addUser(@RequestBody User user){
+        try {
+            user.setId(UUID.randomUUID().toString().replace("-", ""));
+            user.setPwd("000000");
+            user.setSts("1");
+            user.setCtime(new Date());
+            User insert = this.userService.insert(user);
+            return ResultUtil.success(insert);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultUtil.error(e.getMessage());
+        }
+    }
+
+    @PostMapping(value = "/editUser")
+    public Object editUser(@RequestBody User user){
+        try {
+          //  user.setId(UUID.randomUUID().toString().replace("-", ""));
+          //  user.setPwd("000000");
+          //  user.setSts("1");
+          //  user.setCtime(new Date());
+            User update = this.userService.update(user);
+            return ResultUtil.success(update);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultUtil.error(e.getMessage());
+        }
     }
 
 }
